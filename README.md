@@ -38,18 +38,141 @@ Build a simple, intuitive Q&A web app where users can ask questions, answer them
 - **Tools**: GitHub, VS Code, Excalidraw
 
 
-## 📁 Folder Structure
-stackhub/
+## 🚀 Features
+
+- ✅ Submit new questions (with title, description, and user ID)
+- ✅ View all questions on the homepage (paginated)
+- ✅ Submit answers to any question
+- ✅ View all answers under a question
+- ✅ Upvote/Downvote questions
+- ✅ Search and tag-based filtering (mock/local)
+- ✅ Responsive UI (mobile/tablet supported)
+- ✅ Local storage fallback for testing
+- ✅ Clean REST API using Flask
+
+---
+
+## 🧠 Problem Statement (Odoo Hackathon)
+
+> **Stackhub** addresses the need for a clean, collaborative Q&A space where users can **ask technical/non-technical questions**, get answers from others, and vote on relevance. It promotes a learning culture inside teams, campuses, or communities — solving the “knowledge gap” in a simple and intuitive way.
+
+---
+
+## 🛠 Tech Stack
+
+| Part        | Technology     |
+|-------------|----------------|
+| Frontend    | HTML, CSS, JavaScript |
+| Backend     | Python + Flask |
+| Database    | SQLite (via SQLAlchemy) |
+| Versioning  | Git + GitHub |
+| Other       | Blueprint Routing, CORS, REST API |
+
+---
+
+## 📂 Folder Structure
+
+```
+your-project-root/
+│
 ├── backend/
-│ ├── app.py → Flask server
-│ ├── models/ → DB models
-│ ├── routes/ → API routes
-│ └── requirements.txt → Dependencies
+│   ├── app.py
+│   ├── extensions.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── question.py
+│   │   └── answer.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── questions.py
+│   │   ├── answers.py
+│   │   └── votes.py
+│   └── requirements.txt
 │
 ├── frontend/
-│ ├── index.html → UI layout
-│ ├── css/style.css → Styling
-│ ├── js/script.js → Frontend logic
-│ └── assets/ → Icons/images
+│   ├── index.html
+│   ├── ask.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       ├── script.js
+│       └── mock.js
 │
-├── README.md → Project overview
+└── README.md
+```
+
+---
+
+## ✅ How It Works
+
+### 👨‍💻 Questions API
+
+- `GET /questions`: Fetch all questions  
+- `POST /questions`: Add a new question
+
+```json
+{
+  "title": "Your Question",
+  "body": "Details...",
+  "user_id": 1
+}
+```
+
+---
+
+### 💬 Answers API
+
+- `GET /answers/<question_id>`: Get all answers for a question  
+- `POST /answers`: Submit a new answer
+
+```json
+{
+  "body": "Your answer",
+  "question_id": 1,
+  "user_id": 1
+}
+```
+
+---
+
+### 🗳 Voting API
+
+- `POST /votes`: Vote on a question
+
+```json
+{
+  "id": 1,
+  "vote": "up"
+}
+```
+
+---
+
+## 🖥️ How to Run Locally
+
+### 1. Backend
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate   # For Windows
+pip install -r requirements.txt
+python app.py
+```
+
+Server will start on: `http://127.0.0.1:5000`
+
+---
+
+### 2. Frontend
+
+Simply open the file:
+
+```
+frontend/index.html
+```
+
+in any browser.
+
+Make sure your Flask backend is running before that.****
