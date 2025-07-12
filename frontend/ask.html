@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ask Question – Stackhub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Stackhub</h1>
+    <a href="index.html"><button>🏠 Home</button></a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Ask a Question</h2>
+      <input type="text" id="q-title" placeholder="Question Title" />
+      <textarea id="q-body" placeholder="Describe your question here..."></textarea>
+      <input type="text" id="q-tags" placeholder="Tags (comma separated, e.g. js,html)" />
+      <button onclick="submitQuestion()">Submit</button>
+    </section>
+  </main>
+
+  <script>
+    const API_BASE = "http://127.0.0.1:5000";
+
+    async function submitQuestion() {
+      const title = document.getElementById("q-title").value.trim();
+      const body = document.getElementById("q-body").value.trim();
+      const tagsInput = document.getElementById("q-tags").value.trim();
+
+      if (!title || !body) {
+        alert("Both title and body are required.");
+        return;
+      }
+
+      const tags = tagsInput
+        .split(",")
+        .map(tag => tag.trim().toLowerCase())
+        .filter(tag => tag !== "");
+
+      const newQuestion = {
+        title,
+        body,
+        user_id: 1,         // static user for now
+        tags                // only if backend handles it
+      };
+
+      try {
+        const res = await fetch('${API_BASE}/questions', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newQuestion),
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          alert("❌ Failed to submit: " + (err.error || "Unknown error"));
+          return;
+        }
+
+        alert("✅ Question submitted!");
+        window.location.href = "index.html";
+      } catch (e) {
+        alert("❌ Error connecting to server.");
+        console.error(e);
+      }
+    }
+  </script>
+</body>
+</html>
