@@ -10,7 +10,8 @@
 <body>
   <header>
     <h1>📚 Stackhub</h1>
-    <button onclick="showAskForm()">➕ Ask Question</button>
+    <a href="ask.html"><button>➕ Ask Question</button></a>
+
   </header>
 
   <main>
@@ -18,8 +19,15 @@
 
     <button id="clear-filter-btn" class="hidden" onclick="loadQuestions()">🔄 Clear Filter</button>
 
+
     <section id="question-list">
       <!-- Questions will appear here -->
+       <div id="pagination" class="pagination-controls">
+  <button onclick="prevPage()">⬅ Previous</button>
+  <span id="page-indicator">Page 1</span>
+  <button onclick="nextPage()">Next ➡</button>
+</div>
+
     </section>
 
     <section id="ask-form" class="hidden">
@@ -30,7 +38,7 @@
     </section>
   </main>
 
-  <script src="js/script.js"></script>
+
   <script src="js/mock.js"></script>
 <script src="js/script.js"></script>
 

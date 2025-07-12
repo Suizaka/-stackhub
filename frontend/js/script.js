@@ -2,13 +2,14 @@ const API_BASE = "http://127.0.0.1:5000";
 let currentPage = 1;
 const pageSize = 5;
 
+// 🔄 Load Questions
 async function loadQuestions() {
   const res = await fetch(${API_BASE}/questions);
   const questions = await res.json();
-
   renderQuestions(questions);
 }
 
+// 📋 Render Question Cards
 function renderQuestions(allQuestions) {
   const container = document.getElementById("question-list");
   container.innerHTML = "";
@@ -44,6 +45,17 @@ function renderQuestions(allQuestions) {
   updatePaginationIndicator(allQuestions.length);
 }
 
+// 🗳 Voting
+async function vote(id, direction) {
+  await fetch(${API_BASE}/votes, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id, vote: direction }),
+  });
+  loadQuestions();
+}
+
+// 💬 Load Answers
 async function loadAnswers(qId) {
   const res = await fetch(${API_BASE}/answers/${qId});
   const answers = await res.json();
@@ -54,19 +66,11 @@ async function loadAnswers(qId) {
     : "<li>No answers yet.</li>";
 }
 
-async function vote(id, direction) {
-  await fetch(${API_BASE}/votes, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id, vote: direction }),
-  });
-  loadQuestions();
-}
-
+// ➕ Submit New Question
 async function submitQuestion() {
   const title = document.getElementById("q-title").value.trim();
   const body = document.getElementById("q-body").value.trim();
-  const user_id = 1; // static for now
+  const user_id = 1; // static dummy user
 
   if (!title || !body) {
     alert("Both title and body are required.");
@@ -79,12 +83,14 @@ async function submitQuestion() {
     body: JSON.stringify({ title, body, user_id }),
   });
 
+  // Clear form
   document.getElementById("q-title").value = "";
   document.getElementById("q-body").value = "";
 
   loadQuestions();
 }
 
+// ✍ Submit New Answer
 async function submitAnswer(qId) {
   const textarea = document.getElementById(answer-${qId});
   const body = textarea.value.trim();
@@ -105,12 +111,7 @@ async function submitAnswer(qId) {
   loadQuestions();
 }
 
-function updatePaginationIndicator(total) {
-  const indicator = document.getElementById("page-indicator");
-  const totalPages = Math.ceil(total / pageSize);
-  indicator.textContent = Page ${currentPage} of ${totalPages};
-}
-
+// ⬅➡ Pagination Controls
 function nextPage() {
   currentPage++;
   loadQuestions();
@@ -121,4 +122,11 @@ function prevPage() {
   loadQuestions();
 }
 
+function updatePaginationIndicator(total) {
+  const indicator = document.getElementById("page-indicator");
+  const totalPages = Math.ceil(total / pageSize);
+  indicator.textContent = Page ${currentPage} of ${totalPages};
+}
+
+// 📦 Load on Page Ready
 window.onload = loadQuestions;
