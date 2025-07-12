@@ -1,1 +1,31 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stackhub – Q&A Forum</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Stackhub</h1>
+    <button onclick="showAskForm()">➕ Ask Question</button>
+  </header>
+
+  <main>
+    <section id="question-list">
+      <!-- Questions will appear here -->
+    </section>
+
+    <section id="ask-form" class="hidden">
+      <h2>Ask a Question</h2>
+      <input type="text" id="q-title" placeholder="Question Title" />
+      <textarea id="q-body" placeholder="Describe your question here..."></textarea>
+      <button onclick="submitQuestion()">Submit</button>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
