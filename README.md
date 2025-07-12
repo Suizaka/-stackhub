@@ -7,13 +7,6 @@ Repo for Odoo Hackathon 2025
 Stackhub is a clean and minimal platform for asking and answering questions within a community.  
 It is designed to encourage collaborative learning and structured knowledge sharing, just like StackOverflow — but lightweight and hackathon-fast.
 
----
-
-## 🧠 Problem Statement
-
-**Problem Statement #2 – StackIt: A Minimal Q&A Forum**
-
-Build a simple, intuitive Q&A web app where users can ask questions, answer them, upvote/downvote responses, and mark correct answers — with role-based access and notification support.
 
 [📄 Full Problem PDF](#)  
 [🎨 Figma Mockup](https://app.excalidraw.com/l/65VNwvy7c4X/9mhEahV0MQg)
