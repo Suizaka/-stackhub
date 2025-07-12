@@ -24,10 +24,10 @@ Build a simple, intuitive Q&A web app where users can ask questions, answer them
 
 | Name              | Email                     | Role           |
 |-------------------|----------------------------|----------------|
-| Hitarth Shah      | hitarth@example.com        | Backend Lead   |
-| Tanish Patel      | tanishpatel1205@gmail.com  | Frontend Dev   |
-| Riddhi Patel      | riddhi2you@gmail.com       | Frontend Dev   |
-| Mahi Thakor       | mahiya.at1123@gmail.com    | Backend + DB   |
+| Hitarth Shah      | hitarthhitu27@gmail.com    | Backend Lead and Frontend Dev   |
+| Tanish Patel      | tanishpatel1205@gmail.com  | Backend + DB   |
+| Riddhi Patel      | riddhi2you@gmail.com       | Backend        |
+| Mahi Thakor       | mahiya.at1123@gmail.com    | Fronted Dev    |
 
 
 ## 🧰 Tech Stack
