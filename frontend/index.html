@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,36 +10,24 @@
   <header>
     <h1>📚 Stackhub</h1>
     <a href="ask.html"><button>➕ Ask Question</button></a>
-
   </header>
 
   <main>
     <input type="text" id="search-box" placeholder="Search questions..." oninput="filterQuestions()" />
-
     <button id="clear-filter-btn" class="hidden" onclick="loadQuestions()">🔄 Clear Filter</button>
 
-
     <section id="question-list">
-      <!-- Questions will appear here -->
-       <div id="pagination" class="pagination-controls">
-  <button onclick="prevPage()">⬅ Previous</button>
-  <span id="page-indicator">Page 1</span>
-  <button onclick="nextPage()">Next ➡</button>
-</div>
-
+      <!-- Questions will be injected here via JS -->
     </section>
 
-    <section id="ask-form" class="hidden">
-      <h2>Ask a Question</h2>
-      <input type="text" id="q-title" placeholder="Question Title" />
-      <textarea id="q-body" placeholder="Describe your question here..."></textarea>
-      <button onclick="submitQuestion()">Submit</button>
-    </section>
+    <div id="pagination" class="pagination-controls">
+      <button onclick="prevPage()">⬅ Previous</button>
+      <span id="page-indicator">Page 1</span>
+      <button onclick="nextPage()">Next ➡</button>
+    </div>
   </main>
 
-
-  <script src="js/mock.js"></script>
-<script src="js/script.js"></script>
-
+  <!-- Only load REAL script -->
+  <script src="js/script.js"></script>
 </body>
 </html>
