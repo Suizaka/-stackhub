@@ -107,6 +107,20 @@ main {
   margin-right: 5px;
   margin-top: 4px;
 }
+.tag:hover {
+  background-color: #d0e5f5;
+  cursor: pointer;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.question-card {
+  transition: all 0.3s ease-in-out;
+}
 
 /* 👍 Voting */
 .vote-controls {
