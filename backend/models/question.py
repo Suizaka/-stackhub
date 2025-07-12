@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import db
+from extensions import db
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,3 +14,4 @@ class Question(db.Model):
 
     def __repr__(self):
         return f"<Question {self.title}>"
+
