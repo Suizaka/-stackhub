@@ -4,7 +4,7 @@ const pageSize = 5;
 
 // 🔄 Load Questions
 async function loadQuestions() {
-  const res = await fetch(${API_BASE}/questions);
+  const res = await fetch('${API_BASE}/questions');
   const questions = await res.json();
   renderQuestions(questions);
 }
@@ -47,7 +47,7 @@ function renderQuestions(allQuestions) {
 
 // 🗳 Voting
 async function vote(id, direction) {
-  await fetch(${API_BASE}/votes, {
+  await fetch('${API_BASE}/votes', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ id, vote: direction }),
@@ -57,10 +57,10 @@ async function vote(id, direction) {
 
 // 💬 Load Answers
 async function loadAnswers(qId) {
-  const res = await fetch(${API_BASE}/answers/${qId});
+  const res = await fetch('${API_BASE}/answers/${qId}');
   const answers = await res.json();
 
-  const list = document.getElementById(answers-${qId});
+  const list = document.getElementById('answers-${qId}');
   list.innerHTML = answers.length
     ? answers.map((a) => <li>${a.body}</li>).join("")
     : "<li>No answers yet.</li>";
@@ -77,7 +77,7 @@ async function submitQuestion() {
     return;
   }
 
-  await fetch(${API_BASE}/questions, {
+  await fetch('${API_BASE}/questions', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ title, body, user_id }),
@@ -92,7 +92,7 @@ async function submitQuestion() {
 
 // ✍ Submit New Answer
 async function submitAnswer(qId) {
-  const textarea = document.getElementById(answer-${qId});
+  const textarea = document.getElementById('answer-${qId}');
   const body = textarea.value.trim();
   const user_id = 1;
 
@@ -101,7 +101,7 @@ async function submitAnswer(qId) {
     return;
   }
 
-  await fetch(${API_BASE}/answers, {
+  await fetch('${API_BASE}/answers', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ body, question_id: qId, user_id }),
@@ -125,7 +125,7 @@ function prevPage() {
 function updatePaginationIndicator(total) {
   const indicator = document.getElementById("page-indicator");
   const totalPages = Math.ceil(total / pageSize);
-  indicator.textContent = Page ${currentPage} of ${totalPages};
+  indicator.textContent = 'Page ${currentPage} of ${totalPages}';
 }
 
 // 📦 Load on Page Ready
