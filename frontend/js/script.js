@@ -62,7 +62,7 @@ async function loadAnswers(qId) {
 
   const list = document.getElementById(`answers-${qId}`);
   list.innerHTML = answers.length
-    ? answers.map((a) => <li>${a.body}</li>).join("")
+    ? answers.map((a) => `<li>${a.body}</li>`).join("")
     : "<li>No answers yet.</li>";
 }
 
@@ -70,7 +70,7 @@ async function loadAnswers(qId) {
 async function submitQuestion() {
   const title = document.getElementById("q-title").value.trim();
   const body = document.getElementById("q-body").value.trim();
-  const user_id = 1; // static dummy user
+  const user_id = 1; // dummy user
 
   if (!title || !body) {
     alert("Both title and body are required.");
