@@ -1,4 +1,4 @@
-# -stackhub
+# stackhub
 Repo for Odoo Hackathon 2025
 # 📚 Stackhub – A Minimal Q&A Forum Platform
 
