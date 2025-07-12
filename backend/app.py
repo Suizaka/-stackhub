@@ -1,22 +1,24 @@
 from flask import Flask
 from flask_cors import CORS
 from extensions import db
+from models import User, Question, Answer
+from routes import all_blueprints
 
 def create_app():
     app = Flask(__name__)
     CORS(app)
 
-    # Config
+    # DB Config
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stackhub.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # Initialize extensions
     db.init_app(app)
 
-    # Import models after db is ready (fixes circular import)
     with app.app_context():
-        from models import User, Question, Answer
         db.create_all()
+
+    for bp in all_blueprints:
+        app.register_blueprint(bp, url_prefix=f"/{bp.name}")
 
     @app.route('/')
     def index():
