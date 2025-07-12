@@ -14,6 +14,10 @@
   </header>
 
   <main>
+    <input type="text" id="search-box" placeholder="Search questions..." oninput="filterQuestions()" />
+
+    <button id="clear-filter-btn" class="hidden" onclick="loadQuestions()">🔄 Clear Filter</button>
+
     <section id="question-list">
       <!-- Questions will appear here -->
     </section>
@@ -27,5 +31,8 @@
   </main>
 
   <script src="js/script.js"></script>
+  <script src="js/mock.js"></script>
+<script src="js/script.js"></script>
+
 </body>
 </html>
