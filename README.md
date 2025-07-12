@@ -36,7 +36,7 @@ Build a simple, intuitive Q&A web app where users can ask questions, answer them
 - **Backend**: Python (Flask)
 - **Database**: SQLite
 - **Tools**: GitHub, VS Code, Excalidraw
-- 
+
 
 ## 📁 Folder Structure
 stackhub/
